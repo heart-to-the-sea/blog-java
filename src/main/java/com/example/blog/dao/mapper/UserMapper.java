@@ -44,18 +44,18 @@ public interface UserMapper {
    * @param id 用户Id
    * @return 用户数据
    */
-  @Select("SELECT * FROM user_t WHERE id = #{id}")
-  @Results(
-    id="resultUseInfor",
-    value = {@Result(property = "id", column = "id"),
-    @Result(property = "userName", column = "user_name"),
-    @Result(property = "password", column = "password"),
-    @Result(property = "createDate", column = "create_date"),
-    @Result(property = "updateDate", column = "update_date"),
-    @Result(property = "delFlag", column = "del_flag"),
-    @Result(property = "headImage", column = "head_image")
-  }
-  )
+  // @Select("SELECT * FROM user_t WHERE id = #{id}")
+  // @Results(
+  //   id="resultUseInfor",
+  //   value = {@Result(property = "id", column = "id"),
+  //   @Result(property = "userName", column = "user_name"),
+  //   @Result(property = "password", column = "password"),
+  //   @Result(property = "createDate", column = "create_date"),
+  //   @Result(property = "updateDate", column = "update_date"),
+  //   @Result(property = "delFlag", column = "del_flag"),
+  //   @Result(property = "headImage", column = "head_image")
+  // }
+  // )
   User getInfoById(Integer id);
   /**
    * 新增数据
