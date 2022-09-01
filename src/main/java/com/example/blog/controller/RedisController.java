@@ -17,4 +17,8 @@ public class RedisController {
     redisTemplate.opsForValue().set(key,value);
     return "";
   }
+  @GetMapping("search")
+  public Object search(String key) {
+    return redisTemplate.opsForValue().get(key);
+  }
 }

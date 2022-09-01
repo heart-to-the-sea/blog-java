@@ -1,1 +1,1 @@
-GET   http://localhost:9999/redis/save?key=1&value=1 HTTP/1.1
+GET   http://localhost:9999/redis/save?key=2&value=1223333 HTTP/1.1
