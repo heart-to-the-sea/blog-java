@@ -7,13 +7,21 @@
  */
 package com.example.blog.controller.user;
 
+import com.example.blog.domain.entity.User;
+import com.example.blog.service.user.UserInfoService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+
+
 
 
 
@@ -21,13 +29,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user/info")
 @RestController()
 public class UserInfoController {
+  @Autowired
+  private UserInfoService userInfoService;
+  @GetMapping("/all")
+  public List<User> getAllInfo(){
+    List<User> list = userInfoService.getAllUserInfo();
+    return list;
+  }
   @GetMapping("/{id}")
-  public String get(@PathVariable("id") String id){
-    return id;
+  public User getInfo(@PathVariable Integer id) {
+    User user = userInfoService.getUserById(id);
+    return user;
   }
   @PostMapping("")
-  public String post() {
-    return "1";
+  public Integer save(@RequestBody User user) {
+    return userInfoService.saveUserInfo(user);
   }
   @DeleteMapping("/{id}")
   public String delete(@PathVariable("id") String id) {
