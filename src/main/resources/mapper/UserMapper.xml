@@ -12,8 +12,33 @@
         <result property="headImg" column="head_img" jdbcType="BLOB"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
-    
-    <select id="getInfoById" resultMap="userMap">
-        select * from user_t  where id = #{id}
+
+    <select id="getAll">
+        SELECT * FROM user_t 
+        <where>
+            del_falg = 0
+        </where>
     </select>
+
+    <select id="getInfoById" resultMap="userMap">
+        select * from user_t 
+        <where>
+            id = #{id} and del_flag = 0
+        </where>
+    </select>
+
+    <!-- save --> 
+    <insert id="save" parameterType="com.example.blog.domain.entity.User">
+        INSERT INTO user_t(username,password,create_date,update_date,head_image)
+        VALUES(#{username},#{password},#{createDate},#{updateDate},#{headImage})
+    </insert>
+
+    <!-- getAll --> 
+
+
+    <!-- delete --> 
+    <delete id="delete" parameterType="int">
+        delete from user_t <where>id =#{id}</where>
+    </delete>
+
 </mapper>

@@ -28,4 +28,7 @@ public class UserInfoService {
   public Integer saveUserInfo(User user){
     return userMapper.save(user);
   }
+  public Integer deleteUserInfo(Integer id){
+    return userMapper.delete(id);
+  }
 }

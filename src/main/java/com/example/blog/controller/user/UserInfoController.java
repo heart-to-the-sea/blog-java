@@ -46,8 +46,8 @@ public class UserInfoController {
     return userInfoService.saveUserInfo(user);
   }
   @DeleteMapping("/{id}")
-  public String delete(@PathVariable("id") String id) {
-    return id;
+  public Integer delete(@PathVariable("id") Integer id) {
+    return userInfoService.deleteUserInfo(id);
   }
   @PutMapping("")
   public String put() {

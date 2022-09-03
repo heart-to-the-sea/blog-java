@@ -12,8 +12,8 @@ import lombok.Data;
 public class User {
   @TableId(type = IdType.ASSIGN_ID)
   private Long id;
-  @TableField("user_name")
-  private String userName;
+  @TableField("username")
+  private String username;
   @TableField("password")
   private String password;
   @TableField("create_date")
