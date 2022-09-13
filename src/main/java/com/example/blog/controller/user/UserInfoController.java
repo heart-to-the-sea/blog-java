@@ -28,7 +28,7 @@ public class UserInfoController {
   @Autowired
   private UserInfoService userInfoService;
   @GetMapping("/all")
-  public List<User> getAllInfo(){
+  public List<User> getAllInfo() throws InterruptedException{
     List<User> list = userInfoService.getAllUserInfo();
     return list;
   }

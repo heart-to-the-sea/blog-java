@@ -5,7 +5,7 @@
 
     <resultMap id="userMap" type="com.example.blog.domain.entity.User">
         <id property="id" column="id"/>
-        <result property="userName" column="user_name"/>
+        <result property="username" column="user_name"/>
         <result property="userPassword" column="user_password"/>
         <result property="userEmail" column="user_email"/>
         <result property="userInfo" column="user_info"/>

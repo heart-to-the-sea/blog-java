@@ -19,7 +19,8 @@ import org.springframework.stereotype.Service;
 public class UserInfoService {
   @Autowired
   private UserMapper userMapper;
-  public List<User> getAllUserInfo(){
+  public List<User> getAllUserInfo() throws InterruptedException{
+    Thread.sleep(2000);
     return userMapper.getAll();
   }
   public User getUserById(Integer id) {
