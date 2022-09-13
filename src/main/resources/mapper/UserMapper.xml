@@ -30,7 +30,7 @@
 
     <!-- save --> 
     <insert id="save" parameterType="com.example.blog.domain.entity.User">
-        INSERT INTO user_t(username,password,create_date,update_date,head_image)
+        INSERT INTO user_t(user_name,password,create_date,update_date,head_image)
         VALUES(#{username},#{password},#{createDate},#{updateDate},#{headImage})
     </insert>
 

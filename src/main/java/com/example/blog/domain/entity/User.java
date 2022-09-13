@@ -10,9 +10,8 @@ import lombok.Data;
 @Data
 @TableName("user_t")
 public class User {
-  @TableId(type = IdType.ASSIGN_ID)
+  @TableId(type = IdType.AUTO)
   private Long id;
-  @TableField("username")
   private String username;
   @TableField("password")
   private String password;

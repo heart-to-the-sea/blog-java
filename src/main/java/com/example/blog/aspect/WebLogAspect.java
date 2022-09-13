@@ -7,6 +7,10 @@
  */
 package com.example.blog.aspect;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.JoinPoint;
@@ -20,6 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -47,11 +52,12 @@ public class WebLogAspect {
     HttpServletRequest request = attributes.getRequest();
     StringBuffer sBuffer = new StringBuffer();
     sBuffer.append(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>").append("\r\n")
-    .append("URL                : " + request.getRequestURI().toString()).append("\r\n")
-    .append("HTTP METHOD        : " + request.getMethod()).append("\r\n")
-    .append("CLASS METHOD       : "+ joinPoint.getSignature().getDeclaringTypeName() + " -> " + joinPoint.getSignature().getName()).append("\r\n")
-    .append("IP                 : "+ request.getRemoteAddr()).append("\r\n")
-    .append("REQUEST ARGS          : "+ new Gson().toJson(joinPoint.getArgs())).append("\r\n");
+    .append("DATE                 : "+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"))).append("\r\n")
+    .append("URL                  : " + request.getRequestURI().toString()).append("\r\n")
+    .append("HTTP METHOD          : " + request.getMethod()).append("\r\n")
+    .append("CLASS METHOD         : "+ joinPoint.getSignature().getDeclaringTypeName() + " -> " + joinPoint.getSignature().getName()).append("\r\n")
+    .append("IP                   : "+ request.getRemoteAddr()).append("\r\n")
+    .append("REQUEST ARGS         : "+ new Gson().toJson(joinPoint.getArgs())).append("\r\n");
     logger.info(sBuffer.toString());
     try {
       redisTemplate.opsForValue().set(Thread.currentThread().getId()+"webLog","");
