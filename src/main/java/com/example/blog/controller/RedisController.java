@@ -25,7 +25,8 @@ public class RedisController {
     return "";
   }
   @GetMapping("search")
-  public Object search(String key) {
+  public String search(String key) {
+    redisTemplate.opsForValue().set(Thread.currentThread().getId()+"webLog",redisTemplate.opsForValue().get(Thread.currentThread().getId()+"webLog")+"处理xxxx111\r\n");
     return redisTemplate.opsForValue().get(key);
   }
 }

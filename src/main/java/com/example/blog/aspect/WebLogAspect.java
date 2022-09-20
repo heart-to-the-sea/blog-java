@@ -60,8 +60,7 @@ public class WebLogAspect {
     .append("REQUEST ARGS         : "+ new Gson().toJson(joinPoint.getArgs())).append("\r\n");
     logger.info(sBuffer.toString());
     try {
-      redisTemplate.opsForValue().set(Thread.currentThread().getId()+"webLog","");
-      redisTemplate.opsForValue().set(Thread.currentThread().getId()+"webLog",redisTemplate.opsForValue().get(Thread.currentThread().getId()+"webLog")+sBuffer.toString());
+      redisTemplate.opsForValue().set(Thread.currentThread().getId()+"webLog",sBuffer.toString());
     } catch (Exception e) {
       logger.error("{}", e);
     }

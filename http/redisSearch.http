@@ -1,1 +1,1 @@
-GET   http://localhost:9999/redis/search?key=22&value=122 HTTP/1.1
+GET   http://localhost:9999/redis/search?key=221webLog HTTP/1.1
