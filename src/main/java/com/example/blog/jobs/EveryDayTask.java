@@ -15,16 +15,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class EveryDayTask {
   /**
-   * 每3S一次执行任务
+   * 每1S一次执行任务
    */
-  @Scheduled(fixedRate=3000)
+  @Scheduled(fixedRate=1000)
   public void scheduledTaskRate(){
-    System.out.println("任务执行"+LocalDateTime.now());
+    System.out.println("每秒 任务执行"+LocalDateTime.now());
   }
   /**
-   * 每日上午10.15执行
+   * 每日中午12点执行
    */
-  @Scheduled(cron = "0 15 10 * * ? *")
+  @Scheduled(cron = "0 0 12 * * ?")
   public void scheduledTaskCron(){
     System.out.println("任务执行"+LocalDateTime.now());
   }
