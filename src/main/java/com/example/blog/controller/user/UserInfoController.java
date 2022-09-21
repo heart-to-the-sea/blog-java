@@ -9,6 +9,8 @@ package com.example.blog.controller.user;
 
 import com.example.blog.domain.entity.User;
 import com.example.blog.service.user.UserInfoService;
+import com.example.blog.task.AsyncUserTask;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,14 +29,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserInfoController {
   @Autowired
   private UserInfoService userInfoService;
+  @Autowired
+  private AsyncUserTask userTask;
   @GetMapping("/all")
-  public List<User> getAllInfo() throws InterruptedException{
+  public List<User> getAllInfo()throws InterruptedException{
     List<User> list = userInfoService.getAllUserInfo();
     return list;
   }
   @GetMapping("/{id}")
-  public User getInfo(@PathVariable Integer id) {
+  public User getInfo(@PathVariable Integer id)throws InterruptedException {
     User user = userInfoService.getUserById(id);
+    System.out.println("执行异步县城");
+    userTask.handleAsyncTask();
+    System.out.println("异步县城执行完毕");
     return user;
   }
   @PostMapping("")
