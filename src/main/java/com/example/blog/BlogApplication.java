@@ -12,6 +12,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -19,6 +20,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableFeignClients // 开启feign接口
 @EnableScheduling // 开启定时器
 @MapperScan("com.example.blog.dao.mapper")
+@ComponentScan("com.example.blog.generator2json")
 @SpringBootApplication
 public class BlogApplication {
 

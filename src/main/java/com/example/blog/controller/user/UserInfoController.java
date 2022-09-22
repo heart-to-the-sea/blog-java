@@ -8,6 +8,7 @@
 package com.example.blog.controller.user;
 
 import com.example.blog.domain.entity.User;
+import com.example.blog.generator2json.RestPath;
 import com.example.blog.service.user.UserInfoService;
 import com.example.blog.task.AsyncUserTask;
 
@@ -32,6 +33,7 @@ public class UserInfoController {
   @Autowired
   private AsyncUserTask userTask;
   @GetMapping("/all")
+  @RestPath
   public List<User> getAllInfo()throws InterruptedException{
     List<User> list = userInfoService.getAllUserInfo();
     return list;

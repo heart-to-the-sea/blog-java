@@ -24,7 +24,7 @@ public class EveryDayTask {
    */
   @Scheduled(fixedRate=1000)
   public void scheduledTaskRate(){
-    System.out.println("每秒 任务执行"+LocalDateTime.now());
+    // System.out.println("每秒 任务执行"+LocalDateTime.now());
     // userFeign.getUserAll();
   }
   /**

@@ -17,7 +17,7 @@ import io.netty.util.concurrent.Future;
 public class AsyncUserTask {
   @Async("asyncUserTaskExecutor")
   public void handleAsyncTask() throws InterruptedException {
-    Thread.currentThread().sleep(3000);
+    Thread.sleep(3000);
     System.out.println("asyncUserTask");
   }
 
